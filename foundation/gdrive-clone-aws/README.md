@@ -18,30 +18,7 @@
    - Region: `ap-south-1` (Mumbai) or your choice.
    - Block all public access (recommended).
 
-2. **Create an IAM user** with programmatic access and attach a policy limited to your bucket:
-   ```json
-   {
-     "Version": "2012-10-17",
-     "Statement": [
-       {
-         "Effect": "Allow",
-         "Action": [
-           "s3:PutObject",
-           "s3:GetObject",
-           "s3:DeleteObject",
-           "s3:ListBucket"
-         ],
-         "Resource": [
-           "arn:aws:s3:::your-bucket-name",
-           "arn:aws:s3:::your-bucket-name/*"
-         ]
-       }
-     ]
-   }
-   ```
-   Save the **Access key ID** and **Secret access key**.
 
----
 
 ## 2) Local Dev (optional)
 
