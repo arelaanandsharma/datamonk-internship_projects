@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  api:
+    build: ./server
+    container_name: gdrive-api
+    env_file:
+      - ./server/.env
+    ports:
+      - "4000:4000"
+    volumes:
+      - db-data:/app/data
+    restart: unless-stopped
+
+  web:
+    build: ./client
+    container_name: gdrive-web
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  db-data:
