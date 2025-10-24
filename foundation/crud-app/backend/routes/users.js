@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
     if (err.code === "ER_DUP_ENTRY") {
       return res.status(400).json({ error: "Email already exists" });
     }
-    console.error("❌ MySQL error (POST /):", err.message);
+    console.error("MySQL error (POST /):", err.message);
     res.status(500).json({ error: "Database error" });
   }
 });
@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
     const [rows] = await db.query("SELECT * FROM users");
     res.json(rows);
   } catch (err) {
-    console.error("❌ MySQL error:", err);
+    console.error("MySQL error:", err);
     res.status(500).json({ error: "Database error" });
   }
 });
@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
     ]);
     res.json({ id: req.params.id, name, email });
   } catch (err) {
-    console.error("❌ MySQL error:", err);
+    console.error(" MySQL error:", err);
     res.status(500).json({ error: "Database error" });
   }
 });
@@ -55,7 +55,7 @@ router.delete("/:id", async (req, res) => {
     await db.query("DELETE FROM users WHERE id=?", [req.params.id]);
     res.json({ message: "User deleted" });
   } catch (err) {
-    console.error("❌ MySQL error:", err);
+    console.error(" MySQL error:", err);
     res.status(500).json({ error: "Database error" });
   }
 });
